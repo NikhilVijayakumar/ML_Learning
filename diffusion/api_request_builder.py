@@ -24,3 +24,6 @@ class ApiRequestBuilder:
 
     def get_roop_image_url(self):
         return f"{self.base_url}{self.config['API']['roop_image']}"
+
+    def get_png_info_url(self):
+        return f"{self.base_url}{self.config['API']['png_info']}"

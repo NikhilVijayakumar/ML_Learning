@@ -3,9 +3,14 @@ from diffusion.png_info_api_service import PngInfoApiService
 from utils.base64_utils import image_to_base64
 
 def calculate_aspect_ratio(width, height):
-    return width / height
+    try:
+        width = float(width)
+        height = float(height)
+        return width / height
+    except (ValueError, TypeError):
+        return None
 
-def organize_images(folder_path, error_dir_name, square_dir_name, non_square_dir_name):
+def organize_images(folder_path):
     # Hardcoded supported extensions
     supported_extensions = {'.png', '.jpg', '.jpeg', '.webp'}
 
@@ -15,9 +20,9 @@ def organize_images(folder_path, error_dir_name, square_dir_name, non_square_dir
         return
 
     # Create directories if they don't exist
-    error_dir = os.path.join(folder_path, error_dir_name)
-    square_dir = os.path.join(folder_path, square_dir_name)
-    non_square_dir = os.path.join(folder_path, non_square_dir_name)
+    error_dir = os.path.join(folder_path, "error")
+    square_dir = os.path.join(folder_path, "square")
+    non_square_dir = os.path.join(folder_path, "non_square")
     os.makedirs(error_dir, exist_ok=True)
     os.makedirs(square_dir, exist_ok=True)
     os.makedirs(non_square_dir, exist_ok=True)
@@ -55,10 +60,22 @@ def organize_images(folder_path, error_dir_name, square_dir_name, non_square_dir
             denoising_strength = parameters.get('Denoising strength', '')
 
             # Check for missing parameters
-            if not all([prompt, negative_prompt, steps, sampler, scale_CFG, seed, width, height, denoising_strength]):
-                # Move to error directory if any parameter is missing
+            missing_params = []
+
+            # Check for missing parameters
+            if not prompt:
+                missing_params.append('Prompt')
+            if not negative_prompt:
+                missing_params.append('Negative prompt')
+            if not width:
+                missing_params.append('Width')
+            if not height:
+                missing_params.append('Height')
+
+
+            if missing_params:
+                print(f"Error: Missing parameters for '{file_name}': {', '.join(missing_params)}")
                 os.replace(file_path, os.path.join(error_dir, file_name))
-                print(f"Error: Missing parameters for '{file_name}'. Moved to error directory.")
                 continue
 
             # Calculate aspect ratio

@@ -7,7 +7,7 @@ class PngInfoApiService:
         self.request_builder = ApiRequestBuilder()
 
     def get_png_info(self, image_base64):
-        url = f"{self.request_builder.get_base_url()}/png-info"
+        url = self.request_builder.get_png_info_url()
         headers = self.request_builder.get_default_headers()
         data = {'image': image_base64}
         print(url)
