@@ -12,7 +12,8 @@ class TxtToImgApiService:
 
         try:
             response = requests.post(url, headers=headers, json=data)
-            response.raise_for_status()  # Raise exception for non-200 status codes
+            response.raise_for_status()
+            print(f"txt_to_img_api success")
             return response.json()
         except requests.exceptions.RequestException as e:
             print(f"Error: {e}")

@@ -19,7 +19,7 @@ def generate_beautiful_woman_prompt(ethnicity="European"):
             "nose_shape": random.choice(["small", "pointy", "upturned"]),
             "cheekbone": "high",
             "jawline": "slender",
-            "skin_tone": random.choice(["ivory", "pale", "porcelain", "beige"]),
+            "skin_tone": random.choice(["beige","golden", "almond"]),
             "face_shape": random.choice(face_shapes),
             "lighting": random.choice(lighting_conditions)
         },
@@ -30,7 +30,7 @@ def generate_beautiful_woman_prompt(ethnicity="European"):
             "nose_shape": "small",
             "cheekbone": "prominent",
             "jawline": "slender",
-            "skin_tone": "porcelain",
+            "skin_tone": random.choice(["ivory","porcelain"]),
             "face_shape": random.choice(face_shapes),
             "lighting": random.choice(lighting_conditions)
         },
@@ -41,7 +41,7 @@ def generate_beautiful_woman_prompt(ethnicity="European"):
             "nose_shape": random.choice(["small", "straight", "upturned"]),
             "cheekbone": random.choice(["high", "prominent"]),
             "jawline": random.choice(["angular", "chiseled"]),
-            "skin_tone": random.choice(["ivory", "pale", "porcelain", "golden", "almond"]),
+            "skin_tone": random.choice(["ivory", "pale", "porcelain"]),
             "face_shape": random.choice(face_shapes),
             "lighting": random.choice(lighting_conditions)
         },
@@ -60,6 +60,4 @@ def generate_beautiful_woman_prompt(ethnicity="European"):
 
     return prompt
 
-# Example usage
-prompt = generate_beautiful_woman_prompt()
-print(prompt)
+
