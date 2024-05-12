@@ -27,3 +27,6 @@ class ApiRequestBuilder:
 
     def get_png_info_url(self):
         return f"{self.base_url}{self.config['API']['png_info']}"
+
+    def get_txt_to_image_url(self):
+        return f"{self.base_url}{self.config['API']['txt_to_image']}"

@@ -1,7 +1,7 @@
 # Example usage:
-source_image = "C:/Users/nikhi/Pictures/Upscale/Tabitha Kaiser/Tabitha_Kaiser.png"
-target_folder = "C:/Users/nikhi/Pictures/Upscale/Tabitha Kaiser"
-base_filename = "Tabitha_Kaiser"
+source_image = "C:/Users/nikhi/Pictures/Upscale/character/face/Euro/euro_1.png"
+target_folder = "C:/Users/nikhi/Pictures/Upscale/character/face/Euro"
+base_filename = "euro_face"
 
 
 
