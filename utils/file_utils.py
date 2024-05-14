@@ -1,8 +1,5 @@
-import shutil
-
-
-
 import os
+import shutil
 
 def rename_files(folder_path, base_name):
     # Hardcoded supported extensions
@@ -43,8 +40,7 @@ def rename_files(folder_path, base_name):
 
 
 
-import os
-import shutil
+
 
 def organize_files(target_folder, base_name, no_face_detected_images, non_matching_images, matching_images):
     # Define directories

@@ -1,6 +1,6 @@
 # Example usage:
-source_image = "C:/Users/nikhi/Pictures/Upscale/character/face/Euro/euro_1.png"
-target_folder = "C:/Users/nikhi/Pictures/Upscale/character/face/Euro"
+source_image = "C:/Users/nikhi/Pictures/Upscale/data sample/unique face/unique_1.png"
+target_folder = "C:/Users/nikhi/Pictures/Upscale/data sample/unique face"
 base_filename = "euro_face"
 
 

@@ -30,3 +30,6 @@ class ApiRequestBuilder:
 
     def get_txt_to_image_url(self):
         return f"{self.base_url}{self.config['API']['txt_to_image']}"
+
+    def get_img_to_image_url(self):
+        return f"{self.base_url}{self.config['API']['img_to_image']}"

@@ -30,7 +30,7 @@ def txt_to_image_usecase(selected_ethnicity,save_dir):
         "send_images": True,
         "save_images": False
     }
-    print(data)
+    #print(data)
     response_data = api_service.txt_to_img_api(data)
     if response_data is not None:
         images = response_data.get('images', [])
