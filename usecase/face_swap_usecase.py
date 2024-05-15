@@ -66,8 +66,8 @@ def swap_face_dir(source_image_path, target_directory, output_directory):
             continue
 
         # Generate output file path
-        output_filename = f"{os.path.basename(source_image_path).split('.')[0]}_{filename.split('.')[0]}{extension}"
-        output_filepath = os.path.join(output_directory, output_filename)
+        #output_filename = f"{os.path.basename(source_image_path).split('.')[0]}_{filename.split('.')[0]}{extension}"
+        output_filepath = os.path.join(output_directory, filename)
 
         # Process the image
         swap_face(source_image_path, filepath, output_filepath)

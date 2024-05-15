@@ -63,10 +63,10 @@ def organize_files(target_folder, base_name, no_face_detected_images, non_matchi
         filename = matching_image['filename']
         _, extension = os.path.splitext(filename)
         # Generate new file name
-        new_filename = f"{index}_{base_name}_{similarity_percentage}{extension}"
+        #new_filename = f"{index}_{base_name}_{similarity_percentage}{extension}"
 
         # Copy file to matching directory with new name
-        shutil.copy2(os.path.join(target_folder, filename), os.path.join(matching_dir, new_filename))
+        shutil.copy2(os.path.join(target_folder, filename), os.path.join(matching_dir, filename))
 
     # Copy non-matching images to corresponding directory
     for non_matching_image in non_matching_images:

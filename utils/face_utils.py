@@ -35,3 +35,26 @@ def process_images(source_image, target_folder):
         print(f"Processing completed {target_file}")
 
     return non_face_detected_images, non_matching_images, matching_images
+
+
+
+def process_images_similarity(source_image, target_folder,similarity_percentage):
+    non_face_detected_images = []
+    non_matching_images = []
+    matching_images = []
+
+    print(f"Image processing started on folder {target_folder}: ")
+    for target_file in os.listdir(target_folder):
+        target_image = os.path.join(target_folder, target_file)
+        if os.path.isfile(target_image):
+            result = verify_face(source_image, target_image)
+            if result is not None:
+                if result["verified"] and result["similarity_percentage"] >= similarity_percentage:
+                    matching_images.append({"filename": target_file, "similarity_percentage": result["similarity_percentage"]})
+                else:
+                    non_matching_images.append(target_file)
+            else:
+                non_face_detected_images.append(target_file)
+        print(f"Processing completed {target_file}")
+
+    return non_face_detected_images, non_matching_images, matching_images
