@@ -7,6 +7,7 @@ from txt_to_image_helper import txt_to_image
 from img_to_img_helper import img_to_image,folder_to_image
 from convert_images_helper import convert_images
 from description_helper import update_description
+from add_description_helper import  add_description
 
 
 def main():
@@ -15,11 +16,12 @@ def main():
     #load_image_info()
     #swap_images()
     #organize_images_dir()
-    #txt_to_image()
+    txt_to_image()
     #img_to_image()
     #folder_to_image()
     #convert_images()
-    update_description()
+    #update_description()
+    #add_description()
 
 
 if __name__ == "__main__":
