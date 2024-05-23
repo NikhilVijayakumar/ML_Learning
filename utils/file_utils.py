@@ -42,7 +42,7 @@ def rename_files(folder_path, base_name):
 
 
 
-def organize_files(target_folder, base_name, no_face_detected_images, non_matching_images, matching_images):
+def organize_files(target_folder, no_face_detected_images, non_matching_images, matching_images):
     # Define directories
     matching_dir = os.path.join(target_folder, "matching")
     non_matching_dir = os.path.join(target_folder, "not_matching")
@@ -77,4 +77,13 @@ def organize_files(target_folder, base_name, no_face_detected_images, non_matchi
         shutil.copy2(os.path.join(target_folder, non_face_detected_image), non_face_detected_dir)
 
     print("Files organized successfully.")
+
+
+def read_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        return file.read()
+
+def write_file(file_path, content):
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(content)
 
