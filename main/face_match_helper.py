@@ -1,6 +1,6 @@
 # Example usage:
-source_image = "C:/Users/nikhi/Pictures/Upscale/character/Female/Completed/Shinta Elias.png"
-target_folder = "C:/Users/nikhi/Pictures/Upscale/character/Female/Completed/Shinta Elias"
+source_image = "E:/AI/stable-diffusion-webui/outputs/txt2img-images/2024-05-31/00008-4265183855.png"
+target_folder = "E:/AI/stable-diffusion-webui/outputs/txt2img-images/2024-05-31"
 similarity_percentage = 55
 
 

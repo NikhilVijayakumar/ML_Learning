@@ -16,7 +16,7 @@ def main():
     #load_image_info()
     #swap_images()
     #organize_images_dir()
-    txt_to_image()
+    #txt_to_image()
     #img_to_image()
     #folder_to_image()
     #convert_images()

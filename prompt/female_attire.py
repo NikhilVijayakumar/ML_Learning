@@ -1,49 +1,105 @@
 import random
 
-def generate_female_dress_prompt(style="casual", ethnicity="European"):
-    # Define lists of possible values for each attribute
-    dress_styles = {
-        "medieval": ["gown", "corset", "cloak", "robe"],
-        "modern": ["dress", "skirt", "blouse", "pantsuit"],
-        "casual": ["t-shirt", "jeans", "sneakers", "hoodie"],
-        "formal": ["gown", "evening dress", "suit", "heels"],
-        "sports": ["athletic top", "leggings", "sneakers", "sports bra"],
-        "yoga": ["yoga pants", "tank top", "yoga mat", "sweatband"]
-    }
 
-    # Define ethnicity-specific dress elements
-    ethnicity_dress_elements = {
-        "Korean": {
-            "casual": ["hanbok-inspired dress", "flats", "handbag", "headband"],
-            "formal": ["hanbok", "heels", "clutch", "hairpin"]
-        },
-        "Indian": {
-            "casual": ["sari", "sandals", "bindi", "bangles"],
-            "formal": ["sari", "heels", "clutch", "necklace"]
-        },
+def generate_dress_prompt(ethnicity="European"):
+    # Define dictionaries for ethnicity-specific dress styles with categories
+    dress_styles = {
         "Latina": {
-            "casual": ["ruffled blouse", "denim skirt", "espadrilles", "tote bag"],
-            "formal": ["flamenco dress", "high heels", "clutch", "statement earrings"]
+            "casual": {
+                "tops": ["flowy blouse", "crop top"],
+                "bottoms": ["jeans", "shorts"],
+                "footwear": ["sandals", "sneakers"]
+            },
+            "summer": {
+                "full_outfit": ["sundress"],
+                "footwear": ["flip-flops", "espadrilles"]
+            },
+            "sports": {
+                "tops": ["athletic tank top"],
+                "bottoms": ["leggings"],
+                "footwear": ["running shoes"]
+            },
+            "formal": {
+                "full_outfit": ["elegant gown", "cocktail dress"],
+                "footwear": ["heels"]
+            },
+            "dress": {
+                "full_outfit": ["colorful embroidered dress"],
+                "footwear": ["flats"]
+            }
+        },
+        "Korean": {
+            "casual": {
+                "tops": ["oversized sweater", "blouse"],
+                "bottoms": ["skinny jeans", "culottes"],
+                "footwear": ["sneakers", "loafers"]
+            },
+            "summer": {
+                "full_outfit": ["lightweight dress"],
+                "footwear": ["sandals"]
+            },
+            "sports": {
+                "tops": ["athletic t-shirt"],
+                "bottoms": ["shorts"],
+                "footwear": ["running shoes"]
+            },
+            "formal": {
+                "full_outfit": ["hanbok", "elegant dress"],
+                "footwear": ["heels"]
+            },
+            "dress": {
+                "full_outfit": ["korean traditional dress"],
+                "footwear": ["flats"]
+            }
         },
         "European": {
-            "casual": ["midi dress", "flats", "tote bag", "sunglasses"],
-            "formal": ["ballgown", "stilettos", "clutch", "pearl necklace"]
+            "casual": {
+                "tops": ["t-shirt", "blouse"],
+                "bottoms": ["jeans", "capris"],
+                "footwear": ["flats", "sneakers"]
+            },
+            "summer": {
+                "full_outfit": ["summer dress"],
+                "footwear": ["sandals"]
+            },
+            "sports": {
+                "tops": ["sports tank top"],
+                "bottoms": ["track pants"],
+                "footwear": ["athletic shoes"]
+            },
+            "formal": {
+                "full_outfit": ["evening gown", "tailored suit"],
+                "footwear": ["heels"]
+            },
+            "dress": {
+                "full_outfit": ["elegant cocktail dress"],
+                "footwear": ["pumps"]
+            }
         }
-        # Add more ethnicities and their dress elements as needed
     }
 
-    # Get dress elements based on style and ethnicity
-    dress_elements = ethnicity_dress_elements.get(ethnicity, {}).get(style, [])
+    # Get ethnicity-specific dress styles
+    style_data = dress_styles.get(ethnicity)
 
-    if not dress_elements:
-        return "Invalid style or ethnicity."
+    # Randomly select a category to wear
+    category = random.choice(list(style_data.keys()))
 
-    # Construct the prompt string
-    prompt = f"Female {style} dress for {ethnicity}: "
-    prompt += ", ".join(dress_elements) + "."
+    # Constructing the outfit based on the selected category
+    if 'full_outfit' in style_data[category]:
+        outfit = random.choice(style_data[category]['full_outfit'])
+        footwear = random.choice(style_data[category]['footwear'])
+        prompt = f"This {ethnicity} woman is wearing a {outfit} paired with {footwear}."
+    else:
+        tops = random.choice(style_data[category]['tops'])
+        bottoms = random.choice(style_data[category]['bottoms'])
+        footwear = random.choice(style_data[category]['footwear'])
+        prompt = (f"This {ethnicity} woman is wearing a {tops} and {bottoms} paired with {footwear}.")
 
     return prompt
 
+
 # Example usage
-prompt = generate_female_dress_prompt("casual", "European")
-print(prompt)
+if __name__ == "__main__":
+    print(generate_dress_prompt("European"))
+    print(generate_dress_prompt("Latina"))
+    print(generate_dress_prompt("Korean"))
